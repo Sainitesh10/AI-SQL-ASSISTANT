@@ -15,7 +15,8 @@ from core.sql_agent import SQLAgent
 
 app = FastAPI(title="AI SQL Assistant API")
 
-# Setup CORS
+# Setup CORS (Note: allow_origins=["*"] is used here for demonstration purposes. 
+# In a real production deployment, this MUST be locked down to your specific frontend domains to prevent CSRF and unauthorized API access.)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
@@ -60,6 +61,11 @@ async def upload_file(file: UploadFile = File(...)):
         
     try:
         contents = await file.read()
+        
+        # Security Guard: 10MB limit for file uploads to prevent memory exhaustion and DoS attacks
+        if len(contents) > 10 * 1024 * 1024:
+            raise HTTPException(status_code=400, detail="File too large. Please upload a file smaller than 10MB.")
+            
         filename = file.filename.lower()
         
         # Parse CSV or Excel
