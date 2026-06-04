@@ -10,11 +10,15 @@ A powerful, full-stack Data Analytics platform that converts natural language in
 * **Query History**: Sleek CSS Grid sidebar that remembers your successful queries during the session.
 * **Glassmorphism UI**: A highly polished, modern dark-mode dashboard with floating background orbs and syntax highlighting.
 
+## 🚀 Live Demo & Screenshots
+*(Add a screenshot of the beautiful Glassmorphism UI with a Chart here!)*
+* **Live Web App:** [Link to your Render/Railway deployment here]
+
 ## 🚀 Installation & Setup
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Sainitesh10/AI-SQL-ASSISTANT.git
    cd ai-sql-assistant
    ```
 
@@ -40,6 +44,8 @@ A powerful, full-stack Data Analytics platform that converts natural language in
    uvicorn main:app --reload
    ```
    Then navigate to `http://localhost:8000` in your browser.
+
+> **⚠️ Security Note:** The current `main.py` has CORS set to `allow_origins=["*"]` to make it easy for you to test locally. Before deploying this to production, make sure to change this to your specific frontend URL to prevent unauthorized access!
 
 ## 🛠️ Tech Stack
 * **Backend**: FastAPI, Python, SQLite, Pandas
