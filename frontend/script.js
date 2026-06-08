@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             successBox.classList.remove('hidden');
             inputField.value = `Show me the first 10 rows from ${data.table_name}`;
         } catch (error) {
-            errorBox.textContent = `Error: ${error.message}`;
+            errorBox.innerHTML = `<strong>⚠️ Upload Failed:</strong> ${error.message}`;
             errorBox.classList.remove('hidden');
         } finally {
             uploadLabel.classList.remove('uploading');
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentData.length > 0) exportBtn.classList.remove('hidden');
 
         } catch (error) {
-            errorBox.textContent = `Error: ${error.message}`;
+            errorBox.innerHTML = `<strong>⚠️ Oops!</strong> ${error.message}`;
             errorBox.classList.remove('hidden');
         } finally {
             submitBtn.disabled = false;
