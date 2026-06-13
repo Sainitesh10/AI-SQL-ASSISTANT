@@ -1,18 +1,14 @@
 # 🔮 AI SQL Assistant
 
-A powerful, full-stack Data Analytics platform that converts natural language into SQL, executes it against an uploaded dataset, and visualizes the results. Powered by **FastAPI**, **LangChain**, and **Google Gemini 2.5 Flash**.
+A powerful, Serverless Data Analytics platform that converts natural language into SQL, executes it against an uploaded dataset entirely in your browser using WebAssembly, and visualizes the results. Powered by **WebAssembly SQLite (sql.js)**, **React**, and **Google Gemini 2.5 Flash**.
 
 ## ✨ Features
-* **Chat to SQL**: Type plain English, get instant SQL queries and raw data back.
-* **Dynamic Dataset Upload**: Drag and drop your own `.csv` or `.xlsx` files. The backend uses Pandas to dynamically inject your data into an SQLite database for immediate querying!
-* **Auto-Charting**: Intelligently analyzes SQL results and auto-generates beautiful Bar and Donut charts using `Chart.js`.
+* **100% Serverless**: No backend required! Upload your CSV and an SQLite Database is instantiated directly in your browser's memory using WebAssembly.
+* **Chat to SQL**: Type plain English, and Google's Gemini 2.5 Flash will instantly generate valid SQL queries.
+* **Dynamic Dataset Upload**: Drag and drop your own `.csv` files. The app parses them and automatically creates the schema on the fly.
+* **Auto-Charting**: Intelligently analyzes SQL results using AI and auto-generates beautiful Bar, Pie, Line, and Doughnut charts using `Chart.js`.
 * **CSV Export**: Lightning-fast, client-side button to export your SQL query results straight to a `.csv` file.
-* **Query History**: Sleek CSS Grid sidebar that remembers your successful queries during the session.
-* **Glassmorphism UI**: A highly polished, modern dark-mode dashboard with floating background orbs and syntax highlighting.
-
-## 🚀 Live Demo & Screenshots
-*(Add a screenshot of the beautiful Glassmorphism UI with a Chart here!)*
-* **Live Web App:** [Link to your Render/Railway deployment here]
+* **Glassmorphism UI**: A highly polished, modern dark-mode dashboard with custom gradients and Tailwind CSS styling.
 
 ## 🚀 Installation & Setup
 
@@ -22,32 +18,22 @@ A powerful, full-stack Data Analytics platform that converts natural language in
    cd ai-sql-assistant
    ```
 
-2. **Install Python dependencies:**
+2. **Install Frontend Dependencies:**
    ```bash
-   pip install -r requirements.txt
+   npm install
    ```
 
-3. **Set up Environment Variables:**
-   Create a `.env` file in the root directory and add your Google Gemini API key:
-   ```
-   GOOGLE_API_KEY="your-api-key-here"
-   ```
-
-4. **Initialize Dummy Database (Optional):**
-   If you don't have a CSV to upload yet, run this to generate a mock E-Commerce dataset:
+3. **Start the Development Server:**
    ```bash
-   python database/setup.py
+   npm run dev
    ```
+   Then navigate to `http://localhost:5174` (or the port specified by Vite) in your browser.
 
-5. **Start the Server:**
-   ```bash
-   uvicorn main:app --reload
-   ```
-   Then navigate to `http://localhost:8000` in your browser.
-
-> **⚠️ Security Note:** The current `main.py` has CORS set to `allow_origins=["*"]` to make it easy for you to test locally. Before deploying this to production, make sure to change this to your specific frontend URL to prevent unauthorized access!
+4. **Configure Gemini API Key:**
+   When you open the app, enter your Google Gemini API Key in the top right corner. The key is stored securely in your browser's local storage.
 
 ## 🛠️ Tech Stack
-* **Backend**: FastAPI, Python, SQLite, Pandas
-* **AI Engine**: LangChain, Google Gemini 2.5 Flash
-* **Frontend**: Vanilla HTML/CSS/JS, Chart.js, Highlight.js
+* **Engine**: `sql.js` (SQLite compiled to WebAssembly)
+* **AI Engine**: `@google/generative-ai` (Gemini 2.5 Flash)
+* **Frontend**: React, Vite, Tailwind CSS, Chart.js, Lucide Icons
+* **Data Parsing**: PapaParse
