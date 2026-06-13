@@ -8,8 +8,5 @@ export default defineConfig({
     alias: {
       '@': '/src',
     },
-  },
-  optimizeDeps: {
-    exclude: ['sql.js'] // Prevents vite from breaking WebAssembly bindings for sql.js
   }
 })

@@ -5,6 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI SQL Assistant</title>
+    <!-- Load SQL.js via CDN to avoid Vite CommonJS/WASM Bundler crashes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
   </head>
   <body>
     <div id="root"></div>

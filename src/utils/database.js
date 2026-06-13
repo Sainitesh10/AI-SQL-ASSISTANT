@@ -1,10 +1,13 @@
-import initSqlJs from 'sql.js';
 import Papa from 'papaparse';
 
 let SQL = null;
 
 export const initDB = async () => {
   if (!SQL) {
+    // initSqlJs is now globally available from the CDN script tag in index.html
+    const initSqlJs = window.initSqlJs;
+    if (!initSqlJs) throw new Error("SQL.js failed to load from CDN.");
+    
     SQL = await initSqlJs({
       locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/${file}`
     });
